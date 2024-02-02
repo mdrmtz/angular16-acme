@@ -1,17 +1,16 @@
 import 'zone.js/node';
 
-import * as express from 'express';
-
 import { APP_BASE_HREF } from '@angular/common';
-import { AppServerModule } from './src/main.server';
+import { ngExpressEngine } from '@nguniversal/express-engine';
+import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { ngExpressEngine } from '@nguniversal/express-engine';
+import { AppServerModule } from './src/main.server';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/acme/browser');
+  const distFolder = join(process.cwd(), 'dist/angular16-acme/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
@@ -26,7 +25,7 @@ export function app(): express.Express {
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
-    maxAge: '1d'
+    maxAge: '1y'
   }));
 
   // All regular routes use the Universal engine
