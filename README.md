@@ -10,9 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Run the ssr-dev-server command:
+## Run the ssr-dev-server:
 
-Run `ng run my-universal-app:serve-ssr` to build the project with hydration and ssr enabled.
+Run `ng run my-universal-app:serve-ssr` command to build the project with hydration and ssr enabled.
 
 The serve-ssr command uses Angular Universal Builder's ssr-dev-server internally to start a development server for server-side rendering.
 
@@ -21,7 +21,7 @@ Define at `package.json`
 ```
 "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
-        
+
 ```
 
 ## Build
